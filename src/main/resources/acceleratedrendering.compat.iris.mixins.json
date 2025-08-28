@@ -1,0 +1,31 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.github.argon4w.acceleratedrendering.compat.iris.mixins",
+  "compatibilityLevel": "JAVA_21",
+  "plugin": "com.github.argon4w.acceleratedrendering.compat.iris.mixins.plugin.IrisCompatMixinPlugin",
+  "client": [
+    "acceleratedrendering.AcceleratedBufferBuilderMixin",
+    "acceleratedrendering.AcceleratedBufferSourceMixin",
+    "acceleratedrendering.AcceleratedBufferSourcesMixin",
+    "acceleratedrendering.AcceleratedRenderingModEntryMixin",
+    "acceleratedrendering.CoreBuffersMixin",
+    "acceleratedrendering.FlattenVarHandleMeshInfoCacheMixin",
+    "acceleratedrendering.IBufferEnvironmentPresetsMixin",
+    "acceleratedrendering.MeshInfoMixin",
+    "acceleratedrendering.MeshUploaderMixin",
+    "acceleratedrendering.MeshUploadingProgramDispatcherMixin",
+    "acceleratedrendering.RenderTypeUtilsMixin",
+    "acceleratedrendering.SimpleMeshInfoCacheMixin",
+    "acceleratedrendering.UnsafeMemoryMeshInfoCacheMixin",
+    "iris.FullyBufferedMultiBufferSourceMixin",
+    "iris.HandRendererMixin",
+    "iris.IrisVertexFormatsMixin",
+    "iris.ModelToEntityVertexSerializerMixin",
+    "iris.ShadowRendererMixin",
+    "vanilla.LevelRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

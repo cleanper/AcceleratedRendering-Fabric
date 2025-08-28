@@ -1,0 +1,21 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.github.argon4w.acceleratedrendering.features.items.mixins",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "AbstractContainerScreenMixin",
+    "BakedModelMixin",
+    "BakedQuadMixin",
+    "GuiGraphicsMixin",
+    "GuiMixin",
+    "ItemColorsAccessor",
+    "ItemRendererMixin",
+    "MCItemColorsAccessor",
+    "ScreenMixin",
+    "SimpleBakedModelMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
