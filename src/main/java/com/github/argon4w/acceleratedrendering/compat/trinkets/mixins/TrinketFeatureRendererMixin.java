@@ -73,7 +73,7 @@ public class TrinketFeatureRendererMixin {
 
     @WrapOperation(
         method = "lambda$render$0",
-        at = @At(value = "INVOKE", target = "Ldev/emi/trinkets/api/client/TrinketRenderer;render(Lnet/minecraft/world/item/ItemStack;Ldev/emi/trinkets/api/SlotReference;Lnet/minecraft/client/model/EntityModel;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/world/entity/LivingEntity;FFFFFF)V")
+        at = @At(value = "INVOKE", target = "Ldev/emi/trinkets/api/client/TrinketRenderer;render(Lnet/minecraft/world/item/ItemStack;Ldev/emi/trinkets/api/SlotReference;Lnet/minecraft/client/model/EntityModel;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/world/entity/LivingEntity;FFFFFF)V", remap = false)
     )
     public void filterTrinketsItem(
         TrinketRenderer instance,
