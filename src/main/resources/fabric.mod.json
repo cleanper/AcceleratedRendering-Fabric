@@ -11,7 +11,7 @@
 		"sources": "https://github.com/ZhuRuoLing/AcceleratedRendering-reFabricated"
 	},
 	"license": "${mod_license}",
-	"environment": "*",
+    "environment": "client",
 	"icon": "logo_fabric.png",
 	"accessWidener": "acceleratedrendering.accesswidener",
 	"entrypoints": {
@@ -34,7 +34,7 @@
 	"depends": {
       "fabricloader": ">=0.16.10",
       "java": ">=21",
-      "minecraft": "1.21.1",
+      "minecraft": ["1.21", "1.21.1"],
       "fabric-resource-loader-v0": "*",
       "forgeconfigapiport": "*"
 	}
