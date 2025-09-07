@@ -79,6 +79,7 @@ dependencies {
 	modImplementation "dev.emi:trinkets:3.10.0"
 	//implementation "com.github.tartaricacid:touhoulittlemaid-1.21.1:release-1.2.2"
     include(implementation 'org.reflections:reflections:0.10.2')
+    include(implementation 'org.javassist:javassist:3.30.2-GA')
 }
 
 processResources {

@@ -2,7 +2,9 @@ package com.github.argon4w.acceleratedrendering.core.backends.buffers;
 
 import lombok.Getter;
 
-import static org.lwjgl.opengl.GL46.*;
+import static org.lwjgl.opengl.GL30C.GL_MAP_WRITE_BIT;
+import static org.lwjgl.opengl.GL44.GL_MAP_COHERENT_BIT;
+import static org.lwjgl.opengl.GL44.GL_MAP_PERSISTENT_BIT;
 
 @Getter
 public class MappedBuffer extends MutableBuffer implements IClientBuffer {

@@ -1,6 +1,7 @@
 package com.github.argon4w.acceleratedrendering.core.backends.programs;
 
-import static org.lwjgl.opengl.GL46.*;
+import static org.lwjgl.opengl.GL42C.*;
+import static org.lwjgl.opengl.GL43C.GL_SHADER_STORAGE_BARRIER_BIT;
 
 public enum BarrierFlags {
 

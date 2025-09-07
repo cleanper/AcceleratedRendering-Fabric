@@ -19,41 +19,41 @@ import traben.entity_model_features.models.parts.EMFModelPart;
 @Mixin			(EMFModelPart			.class)
 public class EMFModelPartMixin {
 
-	@SuppressWarnings	("unchecked")
-	@Inject				(
-			method		= "compile",
-			at			= @At("HEAD"),
-			cancellable	= true,
+    @SuppressWarnings	("unchecked")
+    @Inject				(
+            method		= "compile",
+            at			= @At("HEAD"),
+            cancellable	= true,
             remap = false
-	)
-	public void compileFast(
-			PoseStack.Pose	pPose,
-			VertexConsumer pBuffer,
-			int				pPackedLight,
-			int				pPackedOverlay,
-			int				pColor,
-			CallbackInfo ci
-	) {
-		var extension = pBuffer.getAccelerated();
+    )
+    public void compileFast(
+            PoseStack.Pose	pPose,
+            VertexConsumer pBuffer,
+            int				pPackedLight,
+            int				pPackedOverlay,
+            int				pColor,
+            CallbackInfo ci
+    ) {
+        var extension = pBuffer.getAccelerated();
 
-		if (			AcceleratedEntityRenderingFeature	.isEnabled						()
-				&&		AcceleratedEntityRenderingFeature	.shouldUseAcceleratedPipeline	()
-				&&	(	CoreFeature							.isRenderingLevel				()
-				||	(	CoreFeature							.isRenderingGui					()
-				&&		AcceleratedEntityRenderingFeature	.shouldAccelerateInGui			()))
+        if (			AcceleratedEntityRenderingFeature	.isEnabled						()
+                &&		AcceleratedEntityRenderingFeature	.shouldUseAcceleratedPipeline	()
+                &&	(	CoreFeature							.isRenderingLevel				()
+                ||	(	CoreFeature							.isRenderingGui					()
+                &&		AcceleratedEntityRenderingFeature	.shouldAccelerateInGui			()))
                 &&		extension							.isAccelerated					()
-		) {
-			ci			.cancel		();
-			extension	.doRender	(
-					(IAcceleratedRenderer<Void>) this,
-					null,
-					pPose.pose	(),
-					pPose.normal(),
-					pPackedLight,
-					pPackedOverlay,
-					pColor
-			);
-		}
-	}
+        ) {
+            ci			.cancel		();
+            extension	.doRender	(
+                    (IAcceleratedRenderer<Void>) this,
+                    null,
+                    pPose.pose	(),
+                    pPose.normal(),
+                    pPackedLight,
+                    pPackedOverlay,
+                    pColor
+            );
+        }
+    }
 
 }

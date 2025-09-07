@@ -20,7 +20,6 @@ import software.bernie.geckolib.renderer.GeoRenderer;
 @Mixin			(GeoRenderer			.class)
 public interface GeoRendererMixin {
 
-    @SuppressWarnings("unchecked")
     @Inject(
             method		= "renderCubesOfBone",
             cancellable	= true,
@@ -47,8 +46,12 @@ public interface GeoRendererMixin {
             var pose = poseStack.last();
 
             ci			.cancel		();
-            extension	.doRender	(
-                    (IAcceleratedRenderer<Void>) bone,
+
+            @SuppressWarnings("unchecked")
+            IAcceleratedRenderer<Void> renderer = (IAcceleratedRenderer<Void>) bone;
+
+            extension.doRender(
+                    renderer,
                     null,
                     pose.pose	(),
                     pose.normal	(),

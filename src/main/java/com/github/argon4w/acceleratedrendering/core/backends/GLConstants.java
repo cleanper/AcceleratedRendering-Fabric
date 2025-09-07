@@ -1,6 +1,9 @@
 package com.github.argon4w.acceleratedrendering.core.backends;
 
-import static org.lwjgl.opengl.GL46.*;
+import static org.lwjgl.opengl.ARBUniformBufferObject.glGetIntegeri;
+import static org.lwjgl.opengl.GL11C.glGetInteger;
+import static org.lwjgl.opengl.GL43C.GL_MAX_COMPUTE_WORK_GROUP_COUNT;
+import static org.lwjgl.opengl.GL43C.GL_MAX_SHADER_STORAGE_BLOCK_SIZE;
 
 public class GLConstants {
 

@@ -10,8 +10,8 @@ import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
 import org.lwjgl.system.MemoryStack;
 
-import static org.lwjgl.opengl.GL46.*;
-
+import static org.lwjgl.opengl.ARBInternalformatQuery2.GL_TEXTURE_2D;
+import static org.lwjgl.opengl.GL11C.*;
 
 public class TextureUtils implements ResourceManagerReloadListener {
 

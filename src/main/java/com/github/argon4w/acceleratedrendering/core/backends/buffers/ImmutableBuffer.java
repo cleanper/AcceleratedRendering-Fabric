@@ -2,7 +2,12 @@ package com.github.argon4w.acceleratedrendering.core.backends.buffers;
 
 import java.nio.ByteBuffer;
 
-import static org.lwjgl.opengl.GL46.*;
+import static org.lwjgl.opengl.ARBDirectStateAccess.*;
+import static org.lwjgl.opengl.ARBUniformBufferObject.glBindBufferBase;
+import static org.lwjgl.opengl.ARBUniformBufferObject.glBindBufferRange;
+import static org.lwjgl.opengl.GL15C.glBindBuffer;
+import static org.lwjgl.opengl.GL15C.glDeleteBuffers;
+
 
 public class ImmutableBuffer implements IServerBuffer {
 

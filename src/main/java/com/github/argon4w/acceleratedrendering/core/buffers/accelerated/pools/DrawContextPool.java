@@ -9,7 +9,9 @@ import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.renderer.RenderType;
 
-import static org.lwjgl.opengl.GL46.*;
+import static org.lwjgl.opengl.ARBDrawIndirect.glDrawElementsIndirect;
+import static org.lwjgl.opengl.GL11C.GL_UNSIGNED_INT;
+import static org.lwjgl.opengl.GL42C.GL_ATOMIC_COUNTER_BUFFER;
 
 public class DrawContextPool extends SimpleResetPool<DrawContextPool.IndirectDrawContext, MappedBuffer> {
 

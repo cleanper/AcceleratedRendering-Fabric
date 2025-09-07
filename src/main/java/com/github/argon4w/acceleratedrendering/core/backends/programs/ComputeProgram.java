@@ -2,7 +2,9 @@ package com.github.argon4w.acceleratedrendering.core.backends.programs;
 
 import lombok.Getter;
 
-import static org.lwjgl.opengl.GL46.*;
+import static org.lwjgl.opengl.GL20.*;
+import static org.lwjgl.opengl.GL42C.glMemoryBarrier;
+import static org.lwjgl.opengl.GL43C.glDispatchCompute;
 
 @Getter
 public class ComputeProgram {

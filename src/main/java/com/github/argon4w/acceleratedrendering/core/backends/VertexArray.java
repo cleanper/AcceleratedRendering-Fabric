@@ -1,6 +1,8 @@
 package com.github.argon4w.acceleratedrendering.core.backends;
 
-import static org.lwjgl.opengl.GL46.*;
+import static org.lwjgl.opengl.ARBDirectStateAccess.glCreateVertexArrays;
+import static org.lwjgl.opengl.ARBVertexArrayObject.glBindVertexArray;
+import static org.lwjgl.opengl.ARBVertexArrayObject.glDeleteVertexArrays;
 
 public class VertexArray {
 
