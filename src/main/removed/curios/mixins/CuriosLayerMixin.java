@@ -82,7 +82,6 @@ public class CuriosLayerMixin {
 			at		= @At(
 					value	= "INVOKE",
 					target	= "Ltop/theillusivec4/curios/api/client/ICurioRenderer;render(Lnet/minecraft/world/item/ItemStack;Ltop/theillusivec4/curios/api/SlotContext;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/entity/RenderLayerParent;Lnet/minecraft/client/renderer/MultiBufferSource;IFFFFFF)V"
-                    remap = false
 			)
 	)
 	public void filterCuriosItem(

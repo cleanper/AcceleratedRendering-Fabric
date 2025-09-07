@@ -24,43 +24,38 @@ public interface GeoRendererMixin {
     @Inject(
             method		= "renderCubesOfBone",
             cancellable	= true,
-            at			= @At(
-                    value	= "INVOKE",
-                    target	= "Lsoftware/bernie/geckolib/cache/object/GeoBone;getCubes()Ljava/util/List;",
-                    shift	= At.Shift.BEFORE,
-                    remap = false
-            )
+            at          = @At("HEAD")
     )
-	default void renderCubesOfBoneFast(
-			PoseStack		poseStack,
-			GeoBone			bone,
-			VertexConsumer	buffer,
-			int				packedLight,
-			int				packedOverlay,
-			int				colour,
-			CallbackInfo		ci
-	) {
-		var extension = buffer.getAccelerated();
+    default void renderCubesOfBoneFast(
+            PoseStack		poseStack,
+            GeoBone			bone,
+            VertexConsumer	buffer,
+            int				packedLight,
+            int				packedOverlay,
+            int				colour,
+            CallbackInfo		ci
+    ) {
+        var extension = buffer.getAccelerated();
 
-		if (			AcceleratedEntityRenderingFeature	.isEnabled						()
-				&&		AcceleratedEntityRenderingFeature	.shouldUseAcceleratedPipeline	()
-				&&	(	CoreFeature							.isRenderingLevel				()
-				||	(	CoreFeature							.isRenderingGui					()
-				&&		AcceleratedEntityRenderingFeature	.shouldAccelerateInGui			()))
-                &&		extension							.isAccelerated					()
-		) {
-			var pose = poseStack.last();
+        if (AcceleratedEntityRenderingFeature  .isEnabled() &&
+            AcceleratedEntityRenderingFeature  .shouldUseAcceleratedPipeline() &&
+            (CoreFeature.isRenderingLevel							        () ||
+            (CoreFeature.isRenderingGui							            () &&
+            AcceleratedEntityRenderingFeature	    .shouldAccelerateInGui())) &&
+            extension.isAccelerated							                ()) {
 
-			ci			.cancel		();
-			extension	.doRender	(
-					(IAcceleratedRenderer<Void>) bone,
-					null,
-					pose.pose	(),
-					pose.normal	(),
-					packedLight,
-					packedOverlay,
-					colour
-			);
-		}
-	}
+            var pose = poseStack.last();
+
+            ci			.cancel		();
+            extension	.doRender	(
+                    (IAcceleratedRenderer<Void>) bone,
+                    null,
+                    pose.pose	(),
+                    pose.normal	(),
+                    packedLight,
+                    packedOverlay,
+                    colour
+            );
+        }
+    }
 }
