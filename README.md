@@ -37,7 +37,7 @@ Minecraft拥有一个羸弱的, 继承使用OpenGL立即模式的老版本的渲
 部分特性可能需要重启游戏才能生效. 你可以在``模组 > Accelerated Rendering > 配置``找到游戏内配置编辑器.
 如要让加速物品渲染正常工作, 请在"核心配置" (Core Settings) 处开启"强制加速半透明" (Force Translucent Acceleration).
 
-<an id="english"></a>
+<a id="english"></a>
 # AcceleratedRendering
 
 **This is the Fabric version of AcceleratedRendering, if you need the NeoForge supported version, please visit [here](https://github.com/Argon4W/AcceleratedRendering)**

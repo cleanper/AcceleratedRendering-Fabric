@@ -1335,7 +1335,7 @@ public final class ConfigScreen extends OptionsSubScreen {
             private void runRedo() {
                 run.accept(newValue);
             }
-        };
+        }
 
         private final List<Step<?>> undos = new ArrayList<>();
         private final List<Step<?>> redos = new ArrayList<>();

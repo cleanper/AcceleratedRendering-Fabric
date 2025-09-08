@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(value = AcceleratedBufferSource.class)
-public class AcceleratedBufferSourceMixin {
+public class   AcceleratedBufferSourceMixin {
 
 	@ModifyArg(
 			method	= "getBuffer",
@@ -25,21 +25,20 @@ public class AcceleratedBufferSourceMixin {
 		return renderType instanceof WrappableRenderType wrapped ? wrapped.unwrap() : renderType;
 	}
 
-	@Inject(
-			method	= "drawBuffers",
-			at		= @At(
-					value	= "INVOKE",
-					target	= "Lcom/github/argon4w/acceleratedrendering/core/buffers/accelerated/AcceleratedRingBuffers$Buffers;bindDrawBuffers()V",
-					shift	= At.Shift.BEFORE,
-					remap 	= false
-			),
-			remap 	= false
-	)
-	private void beforeBindDrawBuffers(CallbackInfo ci) {
-		if (!ImmediateState.isRenderingLevel) {
-			ImmediateState.renderWithExtendedVertexFormat = false;
-		}
-	}
+    @Inject(
+            method = "drawBuffers",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lcom/github/argon4w/acceleratedrendering/core/buffers/accelerated/AcceleratedRingBuffers$Buffers;bindDrawBuffers()V",
+                    ordinal = 0
+            ),
+            remap = false
+    )
+    private void beforeBindDrawBuffers(CallbackInfo ci) {
+        if (!ImmediateState.isRenderingLevel) {
+            ImmediateState.renderWithExtendedVertexFormat = false;
+        }
+    }
 
 	@Inject(
 			method	= "drawBuffers",

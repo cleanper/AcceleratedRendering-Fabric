@@ -38,14 +38,9 @@ public abstract class BakedQuadMixin implements IAcceleratedBakedQuad {
 			int							combinedOverlay,
 			int							color
 	) {
-		var meshes = MESHES.get(vertices);
+        var meshes = MESHES.computeIfAbsent(vertices, k -> new Object2ObjectOpenHashMap<>());
 
-		if (meshes == null) {
-			meshes = new Object2ObjectOpenHashMap<>	();
-			MESHES.put								(vertices, meshes);
-		}
-
-		var mesh = meshes.get(extension);
+        var mesh = meshes.get(extension);
 
 		if (mesh != null) {
 			mesh.write(
