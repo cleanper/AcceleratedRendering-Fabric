@@ -26,10 +26,10 @@ public class   AcceleratedBufferSourceMixin {
 	}
 
     @Inject(
-            method = "drawBuffers",
-            at = @At(
-                    value = "INVOKE",
-                    target = "Lcom/github/argon4w/acceleratedrendering/core/buffers/accelerated/AcceleratedRingBuffers$Buffers;bindDrawBuffers()V",
+            method  = "drawBuffers",
+            at      = @At(
+                    value	= "INVOKE",
+                    target  = "Lcom/github/argon4w/acceleratedrendering/core/buffers/accelerated/AcceleratedRingBuffers$Buffers;bindDrawBuffers()V",
                     ordinal = 0
             ),
             remap = false

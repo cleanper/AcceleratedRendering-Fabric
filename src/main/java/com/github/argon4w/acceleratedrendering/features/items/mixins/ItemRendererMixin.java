@@ -2,11 +2,12 @@ package com.github.argon4w.acceleratedrendering.features.items.mixins;
 
 import com.github.argon4w.acceleratedrendering.core.CoreFeature;
 import com.github.argon4w.acceleratedrendering.core.buffers.accelerated.builders.VertexConsumerExtension;
-import com.github.argon4w.acceleratedrendering.core.buffers.accelerated.renderers.IAcceleratedRenderer;
 import com.github.argon4w.acceleratedrendering.core.utils.DirectionUtils;
-import com.github.argon4w.acceleratedrendering.features.items.AcceleratedItemRenderContext;
 import com.github.argon4w.acceleratedrendering.features.items.AcceleratedItemRenderingFeature;
+import com.github.argon4w.acceleratedrendering.features.items.AcceleratedQuadsRenderer;
 import com.github.argon4w.acceleratedrendering.features.items.BakedModelExtension;
+import com.github.argon4w.acceleratedrendering.features.items.colors.ItemLayerColors;
+import com.github.argon4w.acceleratedrendering.features.items.contexts.AcceleratedQuadsRenderContext;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -16,15 +17,12 @@ import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.ItemStack;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 
-@ExtensionMethod({	VertexConsumerExtension	.class, BakedModelExtension.class})
-@Mixin			(	ItemRenderer			.class)
-public class ItemRendererMixin implements IAcceleratedRenderer<AcceleratedItemRenderContext> {
+@ExtensionMethod(value = {VertexConsumerExtension	.class, BakedModelExtension.class	})
+@Mixin			(value = {ItemRenderer				.class								})
+public class ItemRendererMixin {
 
 	@WrapOperation(
 			method	= "render",
@@ -33,6 +31,7 @@ public class ItemRendererMixin implements IAcceleratedRenderer<AcceleratedItemRe
 					target	= "Lnet/minecraft/client/renderer/entity/ItemRenderer;renderModelLists(Lnet/minecraft/client/resources/model/BakedModel;Lnet/minecraft/world/item/ItemStack;IILcom/mojang/blaze3d/vertex/PoseStack;Lcom/mojang/blaze3d/vertex/VertexConsumer;)V"
 			)
 	)
+    @SuppressWarnings("deprecation")
 	public void renderFast(
 			ItemRenderer	instance,
 			BakedModel		pModel,
@@ -74,7 +73,8 @@ public class ItemRendererMixin implements IAcceleratedRenderer<AcceleratedItemRe
 		if (extension2.isAccelerated()) {
 			extension2.renderItemFast(
 					pStack,
-					pPoseStack,
+                    RandomSource.create(42L),
+                    pPoseStack.last(),
 					extension1,
 					pCombinedLight,
 					pCombinedOverlay
@@ -95,64 +95,27 @@ public class ItemRendererMixin implements IAcceleratedRenderer<AcceleratedItemRe
 			return;
 		}
 
-		var pose = pPoseStack.last();
-
-		extension1.doRender(
-				this,
-				new AcceleratedItemRenderContext(
-						pStack,
-						pModel,
-						RandomSource.create()
-				),
-				pose.pose	(),
-				pose.normal	(),
-				pCombinedLight,
-				pCombinedOverlay,
-				-1
-		);
-	}
-
-	@SuppressWarnings("deprecation")
-	@Unique
-	@Override
-	public void render(
-			VertexConsumer					vertexConsumer,
-			AcceleratedItemRenderContext	context,
-			Matrix4f						transform,
-			Matrix3f						normal,
-			int								light,
-			int								overlay,
-			int								color
-	) {
-		var extension	= vertexConsumer.getAccelerated	();
-		var itemStack	= context		.getItemStack	();
-		var itemColor	= context		.getItemColor	();
-		var model		= context		.getBakedModel	();
-		var source		= context		.getRandom		();
-
-		extension.beginTransform(transform, normal);
+        var pose			= pPoseStack	.last	();
+        var randomSource	= RandomSource	.create	();
 
 		for (var direction : DirectionUtils.FULL) {
-			source.setSeed(42L);
-
-			for (var quad : model.getQuads(
-					null,
-					direction,
-					source
-			)) {
-				quad
-						.getAccelerated	()
-						.renderFast		(
-								transform,
-								normal,
-								extension,
-								light,
-								overlay,
-								itemColor.getColor(itemStack, quad.getTintIndex())
-						);
-			}
+            randomSource.setSeed	(42L);
+            extension1	.doRender	(
+                    AcceleratedQuadsRenderer.INSTANCE,
+                    new AcceleratedQuadsRenderContext(
+                            pModel.getQuads(
+                                    null,
+                                    direction,
+                                    randomSource
+                            ),
+                            new ItemLayerColors(pStack)
+                    ),
+                    pose.pose	(),
+                    pose.normal	(),
+                    pCombinedLight,
+                    pCombinedOverlay,
+                    -1
+            );
 		}
-
-		extension.endTransform();
 	}
 }

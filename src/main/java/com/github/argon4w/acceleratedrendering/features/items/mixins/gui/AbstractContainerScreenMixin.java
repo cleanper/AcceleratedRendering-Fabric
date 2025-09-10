@@ -1,12 +1,11 @@
-package com.github.argon4w.acceleratedrendering.features.items.mixins;
+package com.github.argon4w.acceleratedrendering.features.items.mixins.gui;
 
 import com.github.argon4w.acceleratedrendering.core.CoreFeature;
 import com.github.argon4w.acceleratedrendering.features.items.AcceleratedItemRenderingFeature;
-import com.github.argon4w.acceleratedrendering.features.items.DecorationRenderContext;
 import com.github.argon4w.acceleratedrendering.features.items.IAcceleratedGuiGraphics;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import com.llamalad7.mixinextras.sugar.Local;
+import com.github.argon4w.acceleratedrendering.features.items.contexts.DecorationRenderContext;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
@@ -125,8 +124,8 @@ public abstract class AbstractContainerScreenMixin extends ScreenMixin {
 	@WrapOperation(
 			method		= "renderSlot",
 			at			= @At(
-					value = "INVOKE",
-					target = "Lnet/minecraft/client/gui/GuiGraphics;renderItemDecorations(Lnet/minecraft/client/gui/Font;Lnet/minecraft/world/item/ItemStack;IILjava/lang/String;)V"
+					value	= "INVOKE",
+					target	= "Lnet/minecraft/client/gui/GuiGraphics;renderItemDecorations(Lnet/minecraft/client/gui/Font;Lnet/minecraft/world/item/ItemStack;IILjava/lang/String;)V"
 			)
 	)
 	public void recordSlotItems(

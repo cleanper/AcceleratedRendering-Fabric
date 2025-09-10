@@ -1,14 +1,13 @@
-package com.github.argon4w.acceleratedrendering.features.items.mixins;
+package com.github.argon4w.acceleratedrendering.features.items.mixins.accessors;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.item.ItemColors;
-import org.annotation.Delete;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Accessor;
 
-@Delete(reason = "目前本模组并不需要的文件")
 @Mixin(Minecraft.class)
-public interface MCItemColorsAccessor {
-    @Accessor
+public interface MinecraftAccessor {
+    @Accessor("itemColors")
     ItemColors getItemColors();
 }
+
