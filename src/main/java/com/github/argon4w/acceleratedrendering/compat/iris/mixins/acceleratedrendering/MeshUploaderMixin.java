@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(value = MeshUploaderPool.MeshUploader.class, remap = false)
+@Mixin(value =        MeshUploaderPool.MeshUploader.class, remap = false)
 public abstract class MeshUploaderMixin {
 
     @Shadow @Final private	IMeshInfoCache meshInfos;
@@ -33,9 +33,9 @@ public abstract class MeshUploaderMixin {
 			)
 	)
 	public void uploadIrisData(
-            CallbackInfo								ci,
-            @Local(name = "meshInfoAddress")	long	meshInfoAddress,
-            @Local(name = "i")					int		offset
+            CallbackInfo								    ci,
+            @Local(name =     "meshInfoAddress")	long	meshInfoAddress,
+            @Local(name =     "i")					int		offset
 	) {
         IRIS_INFO_ENTITY		.at(offset).putShort(meshInfoAddress, ((IIrisMeshInfoCache) meshInfos).getRenderedEntity		(offset));
         IRIS_INFO_BLOCK_ENTITY	.at(offset).putShort(meshInfoAddress, ((IIrisMeshInfoCache) meshInfos).getRenderedBlockEntity	(offset));

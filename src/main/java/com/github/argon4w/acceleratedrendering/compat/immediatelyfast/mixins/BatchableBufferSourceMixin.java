@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.At;
 @Pseudo
 @ExtensionMethod(VertexConsumerExtension.class)
 @Mixin			(BatchableBufferSource	.class)
-public class BatchableBufferSourceMixin {
+public class     BatchableBufferSourceMixin   {
 
 	@ModifyReturnValue(
 			method	= "getBuffer",

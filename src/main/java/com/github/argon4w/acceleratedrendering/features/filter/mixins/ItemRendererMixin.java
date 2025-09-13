@@ -18,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.At;
 		value		= ItemRenderer.class,
 		priority	= 1001
 )
-public class ItemRendererMixin {
+public class          ItemRendererMixin {
 
 	@WrapOperation(
 			method	= "render",

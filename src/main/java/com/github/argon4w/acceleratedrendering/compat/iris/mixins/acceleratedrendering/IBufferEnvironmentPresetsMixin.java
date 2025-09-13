@@ -14,8 +14,8 @@ import org.spongepowered.asm.mixin.Mutable;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 
-@Mixin(IBufferEnvironment.Presets.class)
-public class IBufferEnvironmentPresetsMixin {
+@Mixin(      IBufferEnvironment.Presets.class      )
+public class IBufferEnvironmentPresetsMixin        {
 
     @Mutable @Shadow(remap = false) @Final public static IBufferEnvironment BLOCK;
     @Mutable @Shadow(remap = false) @Final public static IBufferEnvironment ENTITY;

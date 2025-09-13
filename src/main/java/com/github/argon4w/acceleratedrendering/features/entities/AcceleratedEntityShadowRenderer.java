@@ -16,7 +16,7 @@ import org.joml.Vector2f;
 import org.joml.Vector3f;
 
 @ExtensionMethod(VertexConsumerExtension.class)
-public class AcceleratedEntityShadowRenderer implements IAcceleratedRenderer<AcceleratedEntityShadowRenderer.Context> {
+public class     AcceleratedEntityShadowRenderer implements IAcceleratedRenderer<AcceleratedEntityShadowRenderer.Context> {
 
 	@Override
 	public void render(

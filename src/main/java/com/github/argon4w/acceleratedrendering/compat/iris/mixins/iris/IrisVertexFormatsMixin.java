@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.At;
 		value		= IrisVertexFormats.class,
 		priority	= Integer.MAX_VALUE
 )
-public class IrisVertexFormatsMixin {
+public class          IrisVertexFormatsMixin {
 
 	@Shadow @Final @Mutable	public static VertexFormat			ENTITY;
 	@Shadow @Final @Mutable	public static VertexFormat			GLYPH;

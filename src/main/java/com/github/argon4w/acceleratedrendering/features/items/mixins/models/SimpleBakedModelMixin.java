@@ -35,8 +35,8 @@ import org.spongepowered.asm.mixin.Unique;
 import java.util.List;
 import java.util.Map;
 
-@ExtensionMethod(VertexConsumerExtension.class)
-@Mixin			(SimpleBakedModel		.class)
+@ExtensionMethod(     VertexConsumerExtension.class )
+@Mixin			(     SimpleBakedModel		 .class )
 public abstract class SimpleBakedModelMixin implements IAcceleratedBakedModel, IAcceleratedRenderer<AcceleratedModelRenderContext> {
 
 	@Shadow public abstract List<BakedQuad> getQuads(BlockState pState, Direction pDirection, RandomSource pRandom);

@@ -1,6 +1,7 @@
 package com.github.argon4w.acceleratedrendering.core.utils;
 
 import lombok.Getter;
+import org.annotation.Placeh;
 
 import java.util.Arrays;
 
@@ -10,7 +11,7 @@ public abstract class SimpleResetPool<T, C> {
 
 	@Getter protected			Object[]	pool;
 	@Getter protected			int			cursor;
-	protected 					int			size;
+	@Placeh protected 			int			size;
 
 	public SimpleResetPool(int size, C context) {
 		this.size		= size;

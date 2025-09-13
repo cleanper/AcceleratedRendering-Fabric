@@ -27,4 +27,3 @@ public class BlockLayerColors implements ILayerColors {
         return blockColor.getColor(blockState, null, null, layer);
     }
 }
-

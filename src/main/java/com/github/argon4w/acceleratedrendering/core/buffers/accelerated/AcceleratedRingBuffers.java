@@ -101,22 +101,21 @@ public class AcceleratedRingBuffers extends LoopResetPool<AcceleratedRingBuffers
         private 				IMemoryLayout<VertexFormatElement>							layout;
 
 		public Buffers(IBufferEnvironment bufferEnvironment) {
-			var size				= CoreFeature.getPooledElementBufferSize();
-			this.meshUploaderPool	= new MeshUploaderPool					();
-			this.drawContextPool	= new DrawContextPool					(size);
-			this.elementBufferPool	= new ElementBufferPool					(size);
+			var size				= CoreFeature.getPooledElementBufferSize()            ;
+			this.meshUploaderPool	= new MeshUploaderPool					()            ;
+			this.drawContextPool	= new DrawContextPool					(size)        ;
+			this.elementBufferPool	= new ElementBufferPool					(size)        ;
 			this.sharingBuffer		= new MappedBuffer						(64L);
-			this.varyingBuffer		= new StagingBufferPool					(size);
-			this.vertexBuffer		= new StagingBufferPool					(size);
-			this.vertexArray		= new VertexArray						();
-			this.sync				= new Sync								();
-			this.sharing			= new MutableInt						(0);
-			this.builders			= new Object2ObjectLinkedOpenHashMap<>	();
-			this.layers				= new Int2ReferenceOpenHashMap		<>	();
-			this.functions			= new Int2ReferenceOpenHashMap		<>	();
-			this.bufferEnvironment	= bufferEnvironment;
-
-			this.used				= false;
+			this.varyingBuffer		= new StagingBufferPool					(size)        ;
+			this.vertexBuffer		= new StagingBufferPool					(size)        ;
+			this.vertexArray		= new VertexArray						()            ;
+			this.sync				= new Sync								()            ;
+			this.sharing			= new MutableInt						(0)     ;
+			this.builders			= new Object2ObjectLinkedOpenHashMap<>	()            ;
+			this.layers				= new Int2ReferenceOpenHashMap		<>	()            ;
+			this.functions			= new Int2ReferenceOpenHashMap		<>	()            ;
+			this.bufferEnvironment	=     bufferEnvironment                               ;
+			this.used				= false                                               ;
 		}
 
 		public void reset() {

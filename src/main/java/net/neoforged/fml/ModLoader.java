@@ -15,7 +15,7 @@ public class ModLoader {
     private static final IEventBus eventBus = IEventBus.create();
     private static final Map<String, ModContainer> modContainerMap = new HashMap<>();
 
-    public static void postEvent(Event event) {
+    public  static void postEvent(Event event) {
         if (event instanceof IModBusEvent) {
             for (EventPriority phase : EventPriority.values()) {
                 for (ModContainer container : modContainerMap.values()) {
@@ -33,11 +33,11 @@ public class ModLoader {
         }
     }
 
-    public static ModContainer createModContainer(String modid) {
+    public  static ModContainer createModContainer(String modid) {
         return modContainerMap.computeIfAbsent(modid, ModContainer::new);
     }
 
-    public static <T extends Event> T postEventWithReturn(T event) {
+    public  static <T extends Event> T postEventWithReturn(T event) {
         postEvent(event);
         return event;
     }

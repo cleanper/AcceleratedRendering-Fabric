@@ -19,14 +19,14 @@ import org.spongepowered.asm.mixin.Unique;
 
 import java.util.Map;
 
-@Mixin(BakedQuad.class)
+@Mixin(               BakedQuad.class               )
 public abstract class BakedQuadMixin implements IAcceleratedBakedQuad {
 
-	@Unique private static final	Map<int[], Map<IBufferGraph, IMesh>>	MESHES = new Reference2ObjectOpenHashMap<>();
+	@Unique private static final	 Map<int[], Map<IBufferGraph, IMesh>>	MESHES = new Reference2ObjectOpenHashMap<>();
 
-	@Shadow @Final protected		int[]									vertices;
+	@Shadow @Final protected		 int[]									vertices;
 
-	@Shadow public abstract			boolean									isTinted();
+	@Shadow public abstract			 boolean									isTinted();
 
 	@Unique
 	@Override

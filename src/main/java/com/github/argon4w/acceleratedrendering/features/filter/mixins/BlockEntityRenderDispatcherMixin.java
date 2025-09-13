@@ -12,7 +12,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
-@Mixin(BlockEntityRenderDispatcher.class)
+@Mixin(      BlockEntityRenderDispatcher.class)
 public class BlockEntityRenderDispatcherMixin {
 
 	@WrapOperation(

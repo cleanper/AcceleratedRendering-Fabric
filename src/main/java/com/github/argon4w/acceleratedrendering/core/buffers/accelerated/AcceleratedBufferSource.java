@@ -62,13 +62,13 @@ public class AcceleratedBufferSource implements IAcceleratedBufferSource {
 			Runnable	after,
 			int			layerIndex
 	) {
-		var layerKey	= new LayerKey					(layerIndex, renderType);
-        var builder		= activeBuilders.get			(layerKey);
-		var builders	= currentBuffer	.getBuilders	();
-		var functions	= currentBuffer	.getFunctions	();
-		var layers		= currentBuffer	.getLayers		();
-		var function	= functions		.get			(layerIndex);
-		var layer		= layers		.get			(layerIndex);
+		var layerKey	= new LayerKey					    (layerIndex, renderType);
+        var builder		= activeBuilders    .get			(layerKey);
+		var builders	= currentBuffer  	.getBuilders	();
+		var functions	= currentBuffer	    .getFunctions	();
+		var layers		= currentBuffer	    .getLayers		();
+		var function	= functions		    .get			(layerIndex);
+		var layer		= layers		    .get			(layerIndex);
 
 		if (builder != null) {
 			function.addBefore	(before);
@@ -80,9 +80,9 @@ public class AcceleratedBufferSource implements IAcceleratedBufferSource {
             return builder;
 		}
 
-		var vertexBuffer	= currentBuffer.getVertexBuffer		();
-		var varyingBuffer	= currentBuffer.getVaryingBuffer	();
-		var elementSegment	= currentBuffer.getElementSegment	();
+		var vertexBuffer	= currentBuffer .getVertexBuffer	();
+		var varyingBuffer	= currentBuffer .getVaryingBuffer	();
+		var elementSegment	= currentBuffer .getElementSegment	();
 
 		if (vertexBuffer == null) {
 			currentBuffer	= ringBuffers	.get				(true);
@@ -188,8 +188,8 @@ public class AcceleratedBufferSource implements IAcceleratedBufferSource {
 					var renderType	= drawContext	.getRenderType		();
 					renderType						.setupRenderState	();
 
-					var mode	= renderType	.mode;
-					var shader	= RenderSystem	.getShader();
+					var mode	= renderType     	.mode;
+					var shader	= RenderSystem   	.getShader();
 
 					shader.setDefaultUniforms(
 							mode,
@@ -198,29 +198,30 @@ public class AcceleratedBufferSource implements IAcceleratedBufferSource {
 							Minecraft.getInstance()	.getWindow			()
 					);
 
-					shader		.apply				();
-					drawContext	.drawElements		(mode);
-					shader		.clear				();
-					renderType	.clearRenderState	();
+					shader		.apply				                    ();
+					drawContext	.drawElements		                (mode);
+					shader		.clear				                    ();
+					renderType	.clearRenderState	                    ();
 				}
 
-				function.runAfter			();
-				function.reset				();
-				layer	.clear				();
-				buffer	.unbindVertexArray	();
+				function.runAfter			                            ();
+				function.reset			                            	();
+				layer	.clear				                            ();
+				buffer	.unbindVertexArray	                            ();
 			}
 		}
 
 		for (var buffer : buffers) {
-			buffer.reset		();
-			buffer.setInFlight	();
+			buffer.reset		                                        ();
+			buffer.setInFlight                                      	();
 		}
 
 		used			= false;
-		currentBuffer	= ringBuffers	.get	(false);
-        activeBuilders					.clear	();
-		activeLayers					.clear	();
-		buffers							.clear	();
-		buffers							.add	(currentBuffer);
+		currentBuffer	= ringBuffers	                      .get (false);
+        activeBuilders					                      .clear	();
+		activeLayers					                      .clear	();
+		buffers							                      .clear	();
+		buffers							                      .add	    (
+        currentBuffer                                                    );
 	}
 }

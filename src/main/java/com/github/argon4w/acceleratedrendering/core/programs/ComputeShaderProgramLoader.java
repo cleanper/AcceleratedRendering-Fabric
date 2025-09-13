@@ -25,15 +25,15 @@ public class ComputeShaderProgramLoader extends SimplePreparableReloadListener<M
 	@Override
 	protected Map<ResourceLocation, ShaderSource> prepare(ResourceManager resourceManager, ProfilerFiller profiler) {
 		try {
-			var shaderSources	= new Object2ObjectOpenHashMap<ResourceLocation, ShaderSource>		();
-			var shaderLocations	= ModLoader.postEventWithReturn(new LoadComputeShaderEvent()).build	();
+			var shaderSources	        = new Object2ObjectOpenHashMap<ResourceLocation, ShaderSource>		();
+			var shaderLocations	        = ModLoader.postEventWithReturn(new LoadComputeShaderEvent()).build	();
 
 			for (ResourceLocation key : shaderLocations.keySet()) {
 				var definition			= shaderLocations	.get			(key);
 				var resourceLocation	= definition		.location		();
 				var barrierFlags		= definition		.barrierFlags	();
 
-				if (resourceLocation == null) {
+				if (resourceLocation    == null) {
 					throw new IllegalStateException("Found empty shader location on: \"" + key + "\"");
 				}
 
@@ -106,7 +106,7 @@ public class ComputeShaderProgramLoader extends SimplePreparableReloadListener<M
 	}
 
 	public static void delete() {
-		for (var program : COMPUTE_SHADERS.values()) {
+		for (var program    : COMPUTE_SHADERS.values()) {
 			program.delete();
 		}
 

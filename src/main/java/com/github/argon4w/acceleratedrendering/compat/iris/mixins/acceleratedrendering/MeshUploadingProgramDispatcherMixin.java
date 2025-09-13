@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.Collection;
 
 @Mixin(value = MeshUploadingProgramDispatcher.class, remap = false)
-public class MeshUploadingProgramDispatcherMixin {
+public class   MeshUploadingProgramDispatcherMixin {
 
 	@Inject(
 			method	= "dispatch",

@@ -1,6 +1,6 @@
 package com.github.argon4w.acceleratedrendering.core.backends;
 
-import static org.lwjgl.opengl.GL46.*;
+import static org.lwjgl.opengl.ARBSync.*;
 
 public class Sync {
 

@@ -12,7 +12,7 @@ import org.joml.Matrix4f;
         VertexConsumerExtension	.class,
         BakedModelExtension		.class
 })
-public class AcceleratedQuadsRenderer implements IAcceleratedRenderer<AcceleratedQuadsRenderContext> {
+public class            AcceleratedQuadsRenderer implements IAcceleratedRenderer<AcceleratedQuadsRenderContext> {
 
     public static final AcceleratedQuadsRenderer INSTANCE = new AcceleratedQuadsRenderer();
 

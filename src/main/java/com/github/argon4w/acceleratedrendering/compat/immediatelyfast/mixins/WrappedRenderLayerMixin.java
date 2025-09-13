@@ -12,8 +12,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Pseudo
 @EqualsAndHashCode
-@Mixin(BatchingBuffers.WrappedRenderLayer.class)
-public class WrappedRenderLayerMixin {
+@Mixin(      BatchingBuffers.WrappedRenderLayer.class)
+public class WrappedRenderLayerMixin                 {
 
     @Unique private RenderType original;
 

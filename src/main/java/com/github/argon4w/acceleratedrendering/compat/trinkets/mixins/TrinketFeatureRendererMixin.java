@@ -19,11 +19,11 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(TrinketFeatureRenderer.class)
-public class TrinketFeatureRendererMixin {
+@Mixin(      TrinketFeatureRenderer.class      )
+public class TrinketFeatureRendererMixin       {
     @Inject(
         method = "render(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/world/entity/LivingEntity;FFFFFF)V",
-        at = @At("HEAD")
+        at     = @At("HEAD")
     )
     public void startRenderTrinketsLayer(
         PoseStack matrixStack,
@@ -48,7 +48,7 @@ public class TrinketFeatureRendererMixin {
 
     @Inject(
         method = "render(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/world/entity/LivingEntity;FFFFFF)V",
-        at = @At("TAIL")
+        at     = @At("TAIL")
     )
     public void stopRenderTrinketsLayer(
         PoseStack matrixStack,
@@ -73,7 +73,7 @@ public class TrinketFeatureRendererMixin {
 
     @WrapOperation(
         method = "lambda$render$0",
-        at = @At(value = "INVOKE", target = "Ldev/emi/trinkets/api/client/TrinketRenderer;render(Lnet/minecraft/world/item/ItemStack;Ldev/emi/trinkets/api/SlotReference;Lnet/minecraft/client/model/EntityModel;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/world/entity/LivingEntity;FFFFFF)V")
+        at     = @At(value = "INVOKE", target = "Ldev/emi/trinkets/api/client/TrinketRenderer;render(Lnet/minecraft/world/item/ItemStack;Ldev/emi/trinkets/api/SlotReference;Lnet/minecraft/client/model/EntityModel;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/world/entity/LivingEntity;FFFFFF)V")
     )
     public void filterTrinketsItem(
         TrinketRenderer instance,

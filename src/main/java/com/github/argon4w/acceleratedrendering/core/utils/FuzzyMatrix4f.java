@@ -5,11 +5,11 @@ import org.joml.Matrix4fc;
 
 public class FuzzyMatrix4f extends Matrix4f {
 
-	public FuzzyMatrix4f(Matrix4f matrix) {
+	public   FuzzyMatrix4f(Matrix4f matrix) {
 		super(matrix);
 	}
 
-	public FuzzyMatrix4f() {
+	public   FuzzyMatrix4f() {
 		super();
 	}
 

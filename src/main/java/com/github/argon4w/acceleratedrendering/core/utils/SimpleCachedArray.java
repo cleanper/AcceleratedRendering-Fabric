@@ -24,9 +24,9 @@ public class SimpleCachedArray<T extends SimpleCachedArray.Element> extends Simp
 	}
 
 	@Override
-	public T fail() {
-		expand();
-		return get();
+	public T fail () {
+		expand    () ;
+		return get() ;
 	}
 
 	public interface Element {

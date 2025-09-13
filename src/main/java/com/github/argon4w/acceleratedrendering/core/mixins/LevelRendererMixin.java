@@ -23,7 +23,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 		value		= LevelRenderer.class,
 		priority	= 998
 )
-public class LevelRendererMixin {
+public class          LevelRendererMixin {
 
 	@Inject(
 			method	= "renderLevel",

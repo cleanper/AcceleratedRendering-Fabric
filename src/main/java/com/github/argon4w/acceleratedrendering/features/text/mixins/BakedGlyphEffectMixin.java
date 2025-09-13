@@ -7,8 +7,8 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
 @EqualsAndHashCode
-@Mixin(BakedGlyph.Effect.class)
-public class BakedGlyphEffectMixin {
+@Mixin(      BakedGlyph.Effect.class      )
+public class BakedGlyphEffectMixin        {
 
     @Shadow @Final public float x0;
     @Shadow @Final public float x1;

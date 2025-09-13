@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(value = ModelToEntityVertexSerializer.class, remap = false)
-public class ModelToEntityVertexSerializerMixin {
+public class   ModelToEntityVertexSerializerMixin {
 
 	@ModifyConstant(
 			method		= "serialize",

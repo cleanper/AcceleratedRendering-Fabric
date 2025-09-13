@@ -17,7 +17,7 @@ import org.joml.Matrix4f;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 
-@Mixin(BufferBuilder.class)
+@Mixin(      BufferBuilder.class      )
 public class BufferBuilderMixin implements IAccelerationHolder, IAcceleratedVertexConsumer {
 
 	@Unique private IAcceleratedBufferSource	bufferSources = EmptyAcceleratedBufferSources.INSTANCE;
@@ -66,9 +66,9 @@ public class BufferBuilderMixin implements IAccelerationHolder, IAcceleratedVert
 
 	@Unique
     @Override
-	public AcceleratedBufferBuilder getAccelerated() {
-		if (		acceleration == null
-				||	acceleration.isOutdated()
+	public AcceleratedBufferBuilder getAccelerated              () {
+		if (		acceleration        ==                      null
+				||	acceleration.       isOutdated              ()
 		) {
 			acceleration = bufferSources.getBuffer(
 					renderType,

@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.Unique;
 
 @ExtensionMethod(VertexConsumerExtension		.class)
 @Mixin			(SheetedDecalTextureGenerator	.class)
-public class SheetedDecalTextureGeneratorMixin implements IAcceleratedVertexConsumer {
+public class     SheetedDecalTextureGeneratorMixin implements IAcceleratedVertexConsumer {
 
 	@Shadow @Final private VertexConsumer	delegate;
 	@Shadow @Final private Matrix4f			cameraInversePose;

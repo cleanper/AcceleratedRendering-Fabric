@@ -26,7 +26,7 @@ import java.util.List;
 @Getter
 @ExtensionMethod(BakedModelExtension.class)
 @Mixin			(WeightedBakedModel	.class)
-public class WeightedBakedModelMixin implements IAcceleratedBakedModel {
+public class     WeightedBakedModelMixin implements IAcceleratedBakedModel {
 
     @Unique private			boolean									accelerated;
     @Unique private			boolean									acceleratedInHand;

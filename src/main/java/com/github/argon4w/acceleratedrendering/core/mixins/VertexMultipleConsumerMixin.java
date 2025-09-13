@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @ExtensionMethod(VertexConsumerExtension.class)
 @Mixin			(targets = "com.mojang.blaze3d.vertex.VertexMultiConsumer$Multiple")
-public class VertexMultipleConsumerMixin implements IAcceleratedVertexConsumer {
+public class     VertexMultipleConsumerMixin implements IAcceleratedVertexConsumer {
 
 	@Shadow @Final private	VertexConsumer[]	delegates;
 

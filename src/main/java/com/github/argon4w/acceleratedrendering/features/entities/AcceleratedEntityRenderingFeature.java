@@ -11,7 +11,7 @@ import java.util.Deque;
 public class AcceleratedEntityRenderingFeature {
 
 	private static final Deque<PipelineSetting>	PIPELINE_CONTROLLER_STACK			= new ArrayDeque<>();
-	private static final Deque<FeatureStatus>	GUI_ACCELERATION_CONTROLLER_STACK	= new ArrayDeque<>();
+	private static final Deque<FeatureStatus  >	GUI_ACCELERATION_CONTROLLER_STACK	= new ArrayDeque<>();
 
 	public static boolean isEnabled() {
 		return FeatureConfig.CONFIG.acceleratedEntityRenderingFeatureStatus.get() == FeatureStatus.ENABLED;

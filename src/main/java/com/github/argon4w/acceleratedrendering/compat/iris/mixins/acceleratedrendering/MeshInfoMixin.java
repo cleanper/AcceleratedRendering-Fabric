@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(value = MeshInfo.class, remap = false)
-public class MeshInfoMixin implements IIrisMeshInfo {
+public class   MeshInfoMixin implements IIrisMeshInfo {
 
 	@Unique private short renderedEntity;
 	@Unique private short renderedBlockEntity;

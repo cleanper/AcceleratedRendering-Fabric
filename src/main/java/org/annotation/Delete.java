@@ -25,8 +25,8 @@ import java.lang.annotation.Target;
  * @version 1.0.0
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
-public @interface Delete {
+@Target   (ElementType.TYPE       )
+public    @interface Delete {
     /**
      * 提供禁用此类的原因（可选）
      *

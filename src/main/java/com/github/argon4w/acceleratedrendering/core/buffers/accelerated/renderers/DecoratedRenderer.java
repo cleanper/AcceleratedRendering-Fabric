@@ -8,8 +8,8 @@ import org.joml.Matrix4f;
 @AllArgsConstructor
 public class DecoratedRenderer<T> implements IAcceleratedRenderer<T> {
 
-	private final IAcceleratedRenderer<T>	renderer;
-	private final IBufferDecorator			bufferDecorator;
+	private final IAcceleratedRenderer<T>	 renderer;
+	private final IBufferDecorator			 bufferDecorator;
 
 	@Override
 	public void render(

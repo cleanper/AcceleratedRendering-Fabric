@@ -9,8 +9,8 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 
 import java.util.Map;
 
-@Mixin(ItemColors.class)
-public interface ItemColorsAccessor {
+@Mixin(          ItemColors.class          )
+public interface ItemColorsAccessor        {
 
     @Accessor("itemColors")
     IdMapper<ItemColor> getItemColors();

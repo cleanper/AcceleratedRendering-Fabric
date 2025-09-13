@@ -66,15 +66,15 @@ public class TransformProgramDispatcher {
 			long							vertexOffset,
 			long							varyingOffset
 	) {
-        var currentOverride = builder.getTransformOverride();
+        var currentOverride   = builder.getTransformOverride();
 
-        if (lastOverride != currentOverride) {
-            lastOverride = currentOverride;
-            lastOverride.useProgram		();
-            lastOverride.setupProgram	();
+        if (lastOverride      != currentOverride) {
+            lastOverride      =  currentOverride;
+            lastOverride        .useProgram		    ();
+            lastOverride        .setupProgram	    ();
         }
 
-        vertexBuffer			.bindBase			(GL_SHADER_STORAGE_BUFFER, VERTEX_BUFFER_IN_INDEX);
+        vertexBuffer			.bindBase			(GL_SHADER_STORAGE_BUFFER, VERTEX_BUFFER_IN_INDEX );
         varyingBuffer			.bindBase			(GL_SHADER_STORAGE_BUFFER, VARYING_BUFFER_IN_INDEX);
 
         return currentOverride	.dispatchTransform	(
@@ -99,8 +99,8 @@ public class TransformProgramDispatcher {
         public DefaultTransformProgramOverride(ResourceLocation key, long varyingSize) {
             this.varyingSize			= varyingSize;
             this.program				= ComputeShaderProgramLoader.getProgram(key);
-            this.vertexCountUniform		= program					.getUniform("vertexCount");
-            this.vertexOffsetUniform	= program					.getUniform("vertexOffset");
+            this.vertexCountUniform		= program					.getUniform("vertexCount"  );
+            this.vertexOffsetUniform	= program					.getUniform("vertexOffset" );
             this.varyingOffsetUniform	= program					.getUniform("varyingOffset");
         }
 

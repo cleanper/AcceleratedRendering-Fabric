@@ -16,8 +16,8 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 
 @ExtensionMethod(VertexConsumerExtension.class)
-@Mixin(OutlineBufferSource.EntityOutlineGenerator.class)
-public class EntityOutlineGeneratorMixin implements IAcceleratedVertexConsumer {
+@Mixin(          OutlineBufferSource.EntityOutlineGenerator.class)
+public class     EntityOutlineGeneratorMixin implements IAcceleratedVertexConsumer {
 
 	@Shadow @Final private VertexConsumer   delegate;
 	@Shadow @Final private int              color;

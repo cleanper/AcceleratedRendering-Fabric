@@ -23,7 +23,7 @@ public class ModContainer {
         this.modInfo = new ModInfo(modid);
     }
 
-    public final <T extends Event & IModBusEvent> void acceptEvent(EventPriority phase, T e) {
+    public  final <T extends Event & IModBusEvent> void acceptEvent(EventPriority phase, T e) {
         try {
             modEventBus.post(phase, e);
         } catch (Throwable ex) {

@@ -26,8 +26,8 @@ import java.util.Map;
 import java.util.function.Predicate;
 
 @Getter
-@ExtensionMethod(BakedModelExtension.class)
-@Mixin			(MultiPartBakedModel.class)
+@ExtensionMethod(     BakedModelExtension.class)
+@Mixin			(     MultiPartBakedModel.class)
 public abstract class MultipartBakedModelMixin implements IAcceleratedBakedModel {
 
 

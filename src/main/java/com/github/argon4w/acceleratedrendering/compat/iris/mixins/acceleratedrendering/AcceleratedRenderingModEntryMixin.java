@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(value = AcceleratedRenderingModEntry.class, remap = false)
-public class AcceleratedRenderingModEntryMixin {
+public class   AcceleratedRenderingModEntryMixin                {
 
     @Inject(method = "conditionalInitialize", at = @At("TAIL"))
     public void registerIrisEvents(

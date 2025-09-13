@@ -10,7 +10,7 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
 import java.lang.reflect.Method;
 
-public class EventBusImpl implements IEventBus {
+public class      EventBusImpl implements IEventBus {
 
     private final Logger logger = LoggerFactory.getLogger("EventBusImpl");
     private final Multimap<EventPriority, EventHandler> eventHandlers = MultimapBuilder.hashKeys().arrayListValues().build();

@@ -29,14 +29,14 @@ public class PassThroughCullingProgramDispatcher implements ICullingProgramDispa
 
 	@Override
 	public int dispatch(AcceleratedBufferBuilder builder) {
-		var vertexCount		= builder			.getTotalVertexCount();
-		var polygonCount	= vertexCount / mode.primitiveLength;
+		var vertexCount		        = builder			.getTotalVertexCount();
+		var polygonCount	        = vertexCount / mode.primitiveLength;
 
 		polygonCountUniform.uploadUnsignedInt(polygonCount);
 		vertexOffsetUniform.uploadUnsignedInt((int) (builder.getVertexBuffer().getOffset() / builder.getVertexSize()));
 
-		program.useProgram	();
-		program.dispatch	(
+		program.useProgram	                                                ();
+		program.dispatch	                                                (
 				(polygonCount + GROUP_SIZE - 1) / GROUP_SIZE,
 				DISPATCH_COUNT_Y_Z,
 				DISPATCH_COUNT_Y_Z

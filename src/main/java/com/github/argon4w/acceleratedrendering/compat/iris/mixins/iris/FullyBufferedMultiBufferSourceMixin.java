@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.At;
 
 @ExtensionMethod(VertexConsumerExtension		.class)
 @Mixin			(FullyBufferedMultiBufferSource	.class)
-public class FullyBufferedMultiBufferSourceMixin {
+public class     FullyBufferedMultiBufferSourceMixin  {
 
 	@ModifyReturnValue(
 			method	= "getBuffer",

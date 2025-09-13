@@ -12,7 +12,7 @@ public class LoadComputeShaderEvent extends Event implements IModBusEvent {
 
 	private final ImmutableMap.Builder<ResourceLocation, ComputeShaderDefinition> shaderLocations;
 
-	public LoadComputeShaderEvent() {
+	public   LoadComputeShaderEvent() {
 		this.shaderLocations = ImmutableMap.builder();
 	}
 

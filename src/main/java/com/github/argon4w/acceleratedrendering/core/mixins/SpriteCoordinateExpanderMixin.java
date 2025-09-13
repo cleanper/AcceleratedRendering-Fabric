@@ -18,7 +18,7 @@ import org.spongepowered.asm.mixin.Unique;
 
 @ExtensionMethod(VertexConsumerExtension	.class)
 @Mixin			(SpriteCoordinateExpander	.class)
-public class SpriteCoordinateExpanderMixin implements IAcceleratedVertexConsumer {
+public class     SpriteCoordinateExpanderMixin implements IAcceleratedVertexConsumer {
 
 	@Shadow @Final private VertexConsumer		delegate;
 	@Shadow @Final private TextureAtlasSprite	sprite;

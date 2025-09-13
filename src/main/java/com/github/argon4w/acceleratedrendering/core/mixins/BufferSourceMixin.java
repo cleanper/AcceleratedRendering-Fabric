@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.At;
 
 @ExtensionMethod(VertexConsumerExtension		.class)
 @Mixin			(MultiBufferSource.BufferSource	.class)
-public class BufferSourceMixin {
+public class     BufferSourceMixin                    {
 
 	@ModifyReturnValue(
 			method	= "getBuffer",

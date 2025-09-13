@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import sun.misc.Unsafe;
 
 @Mixin(value = UnsafeMemoryMeshInfoCache.class, remap = false)
-public class UnsafeMemoryMeshInfoCacheMixin implements IIrisMeshInfoCache {
+public class   UnsafeMemoryMeshInfoCacheMixin implements IIrisMeshInfoCache {
 
 	@Shadow @Final public	static			Unsafe		UNSAFE;
 

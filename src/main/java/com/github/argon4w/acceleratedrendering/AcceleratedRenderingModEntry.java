@@ -19,18 +19,18 @@ public class AcceleratedRenderingModEntry implements ClientModInitializer {
     @Getter
     private static ModContainer container;
 
-    public static ResourceLocation location(String path) {
-        return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
+    public static  ResourceLocation location(           String path  ) {
+        return     ResourceLocation.fromNamespaceAndPath(MOD_ID, path) ;
     }
 
     @Override
     public void onInitializeClient() {
         NeoForgeConfigRegistry.INSTANCE.register(MOD_ID, ModConfig.Type.CLIENT, FeatureConfig.SPEC);
-        container = ModLoader.createModContainer(MOD_ID);
-        IEventBus eventBus = container.getModEventBus();
-        eventBus.register(ComputeShaderPrograms.class);
+        container = ModLoader.createModContainer(MOD_ID)   ;
+        IEventBus eventBus = container.getModEventBus(    );
+        eventBus.register(ComputeShaderPrograms.class     );
         eventBus.register(OrientationCullingPrograms.class);
-        conditionalInitialize(container.getModEventBus());
+        conditionalInitialize(container.getModEventBus()  );
     }
 
     public void conditionalInitialize(IEventBus modEventBus) {

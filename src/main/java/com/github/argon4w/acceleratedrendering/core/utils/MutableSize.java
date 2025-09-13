@@ -8,7 +8,7 @@ public class MutableSize {
 	protected boolean	resized;
 	protected long		size;
 
-	public MutableSize(long initialSize) {
+	public   MutableSize(long initialSize) {
 		this.resized	= false;
 		this.size		= initialSize;
 	}

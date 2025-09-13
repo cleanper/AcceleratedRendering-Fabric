@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
-@Mixin(SimpleMeshInfoCache.class)
+@Mixin(      SimpleMeshInfoCache.class                              )
 public class SimpleMeshInfoCacheMixin implements IIrisMeshInfoCache {
 
     @Shadow(remap = false) @Final private SimpleCachedArray<MeshInfo> meshInfos;

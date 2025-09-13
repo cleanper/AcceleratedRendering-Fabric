@@ -4,8 +4,8 @@ import java.util.Set;
 
 public enum FilterType {
 
-	BLACKLIST,
-	WHITELIST;
+	             BLACKLIST,
+	             WHITELIST;
 
 	public <T> boolean test(Set<T> values, T value) {
 		return switch (this) {

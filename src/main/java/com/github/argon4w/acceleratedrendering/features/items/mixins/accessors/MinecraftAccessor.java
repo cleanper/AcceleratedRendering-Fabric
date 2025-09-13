@@ -10,4 +10,3 @@ public interface MinecraftAccessor {
     @Accessor("itemColors")
     ItemColors getItemColors();
 }
-

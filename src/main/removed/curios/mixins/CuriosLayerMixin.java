@@ -22,8 +22,8 @@ import top.theillusivec4.curios.api.client.ICurioRenderer;
 import top.theillusivec4.curios.client.render.CuriosLayer;
 
 @Pseudo
-@Mixin(CuriosLayer.class)
-public class CuriosLayerMixin {
+@Mixin(      CuriosLayer.class      )
+public class CuriosLayerMixin       {
 
 	@Inject(
 			method	= "render(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/world/entity/LivingEntity;FFFFFF)V",

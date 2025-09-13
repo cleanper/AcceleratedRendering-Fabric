@@ -12,7 +12,7 @@
 	},
 	"license": "${mod_license}",
     "environment": "client",
-	"icon": "logo_fabric.png",
+	"icon": "LOGO_fabric.png",
 	"accessWidener": "acceleratedrendering.accesswidener",
 	"entrypoints": {
 		"client": [

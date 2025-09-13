@@ -30,7 +30,7 @@ import java.util.Map;
 
 @ExtensionMethod(VertexConsumerExtension.class)
 @Mixin			(value = BakedGlyph.class, priority = Integer.MIN_VALUE)
-public class BakedGlyphMixin implements IAcceleratedRenderer<BakedGlyph.Effect> {
+public class     BakedGlyphMixin implements IAcceleratedRenderer<BakedGlyph.Effect> {
 
     @Shadow @Final public			float												u0;
     @Shadow @Final public			float												v0;

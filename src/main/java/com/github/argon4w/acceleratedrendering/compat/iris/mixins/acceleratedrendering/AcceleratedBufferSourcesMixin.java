@@ -8,8 +8,8 @@ import net.minecraft.client.renderer.RenderType;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
-@Mixin(AcceleratedBufferSources.class)
-public class AcceleratedBufferSourcesMixin {
+@Mixin(      AcceleratedBufferSources.class      )
+public class AcceleratedBufferSourcesMixin       {
 
 	@WrapOperation(
 			method	= "getBuffer",

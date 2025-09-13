@@ -29,8 +29,8 @@ public class MappedBuffer extends MutableBuffer implements IClientBuffer {
 			return address + position;
 		}
 
-		var oldPosition = this.position;
-		var newPosition = oldPosition + bytes;
+		var oldPosition     = this.position;
+		var newPosition     = oldPosition + bytes;
 
 		if (occupied) {
 			this.current	= oldPosition;
@@ -42,7 +42,7 @@ public class MappedBuffer extends MutableBuffer implements IClientBuffer {
 		}
 
 		resize(newPosition);
-		return address + oldPosition;
+		return address     + oldPosition;
 	}
 
 	@Override

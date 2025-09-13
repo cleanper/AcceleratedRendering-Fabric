@@ -101,7 +101,6 @@ public final class ConfigScreen extends OptionsSubScreen {
         }
     }
 
-
     public static class TranslationChecker {
         private static final Logger LOGGER = LogManager.getLogger();
         private final Set<String> untranslatables = new HashSet<>();

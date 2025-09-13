@@ -7,8 +7,8 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
-@Mixin(RenderTypeUtils.class)
-public class RenderTypeUtilsMixin {
+@Mixin(      RenderTypeUtils.class      )
+public class RenderTypeUtilsMixin       {
 
 	@ModifyVariable(
 			method		= "getTextureLocation",

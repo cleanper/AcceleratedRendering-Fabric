@@ -13,8 +13,8 @@ public class MeshInfo implements SimpleCachedArray.Element {
 	private int shouldCull;
 
 	public MeshInfo() {
-		this.color = -1;
-		this.light = -1;
+		this.color   = -1;
+		this.light   = -1;
 		this.overlay = -1;
 		this.sharing = -1;
 	}

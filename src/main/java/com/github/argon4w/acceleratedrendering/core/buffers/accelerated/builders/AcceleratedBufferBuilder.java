@@ -428,8 +428,8 @@ public class AcceleratedBufferBuilder implements IAcceleratedVertexConsumer, Ver
 		var meshSize		= serverMesh	.size	();
 		var meshUploader	= meshUploaders	.get	(serverMesh);
 
-		if (meshUploader == null) {
-            meshUploader = buffer	.getMeshUploader		();
+		if (meshUploader    == null) {
+            meshUploader    = buffer	.getMeshUploader		();
             meshUploader			.setServerMesh			(serverMesh);
             meshUploader			.setUploadingOverride	(uploadingOverride);
             meshUploaders			.put					(serverMesh, meshUploader);

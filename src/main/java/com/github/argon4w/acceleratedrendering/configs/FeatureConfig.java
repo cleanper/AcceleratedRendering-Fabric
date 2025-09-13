@@ -412,6 +412,7 @@ public class FeatureConfig {
 				.gameRestart			()
 				.defineListAllowEmpty	("item_filter_values",					new ArrayList<>(), () -> "minecraft:air", object -> object instanceof String string && ResourceLocation.tryParse(string) != null);
 
-		builder.pop();
+		                                                       builder
+                .pop();
 	}
 }

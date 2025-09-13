@@ -17,7 +17,7 @@ import org.joml.Vector3f;
 import java.util.Map;
 
 @ExtensionMethod(VertexConsumerExtension.class)
-public class AcceleratedBakedGlyphRenderer implements IAcceleratedRenderer<Vector2f> {
+public class     AcceleratedBakedGlyphRenderer implements IAcceleratedRenderer<Vector2f> {
 
 	private static final Matrix4f TRANSFORM	= new Matrix4f();
 	private static final Matrix3f NORMAL	= new Matrix3f();

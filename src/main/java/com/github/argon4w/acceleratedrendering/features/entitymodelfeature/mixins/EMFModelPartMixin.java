@@ -17,7 +17,7 @@ import traben.entity_model_features.models.parts.EMFModelPart;
 @Pseudo
 @ExtensionMethod(VertexConsumerExtension.class)
 @Mixin			(EMFModelPart			.class)
-public class EMFModelPartMixin {
+public class     EMFModelPartMixin            {
 
     @SuppressWarnings	("unchecked")
     @Inject				(

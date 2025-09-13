@@ -22,7 +22,7 @@ import org.spongepowered.asm.mixin.injection.At;
 
 @ExtensionMethod(value = {VertexConsumerExtension	.class, BakedModelExtension.class	})
 @Mixin			(value = {ItemRenderer				.class								})
-public class ItemRendererMixin {
+public class              ItemRendererMixin {
 
 	@WrapOperation(
 			method	= "render",

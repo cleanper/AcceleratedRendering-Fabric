@@ -52,8 +52,8 @@ public abstract class AbstractContainerScreenMixin extends ScreenMixin {
 	}
 
 	@Inject(
-			method	= "render",
-			at		= @At(
+			method	        = "render",
+			at		        = @At(
 					value	= "INVOKE",
 					target	= "Lnet/minecraft/client/gui/screens/inventory/AbstractContainerScreen;renderLabels(Lnet/minecraft/client/gui/GuiGraphics;II)V"
 			)
@@ -122,8 +122,8 @@ public abstract class AbstractContainerScreenMixin extends ScreenMixin {
 	}
 
 	@WrapOperation(
-			method		= "renderSlot",
-			at			= @At(
+			method		    = "renderSlot",
+			at			    = @At(
 					value	= "INVOKE",
 					target	= "Lnet/minecraft/client/gui/GuiGraphics;renderItemDecorations(Lnet/minecraft/client/gui/Font;Lnet/minecraft/world/item/ItemStack;IILjava/lang/String;)V"
 			)

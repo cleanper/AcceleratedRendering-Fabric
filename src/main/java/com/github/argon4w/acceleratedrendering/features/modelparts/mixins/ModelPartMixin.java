@@ -27,7 +27,7 @@ import java.util.Map;
 
 @ExtensionMethod(VertexConsumerExtension.class)
 @Mixin			(ModelPart				.class)
-public class ModelPartMixin implements IAcceleratedRenderer<Void> {
+public class     ModelPartMixin implements IAcceleratedRenderer<Void> {
 
 	@Shadow @Final private	List<ModelPart.Cube>		cubes;
 

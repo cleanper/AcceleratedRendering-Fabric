@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(value = CoreBuffers.class, remap = false)
-public class CoreBuffersMixin {
+public class   CoreBuffersMixin                {
 
 	@ModifyReturnValue(
 			method	= "getCoreBufferSources",

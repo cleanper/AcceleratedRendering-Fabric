@@ -14,15 +14,15 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 
-@Mixin(Window.class)
-public class WindowMixin {
+@Mixin(      Window.class      )
+public class WindowMixin       {
     @Shadow
     @Final
     private static Logger LOGGER;
 
     @WrapOperation(
             method = "<init>",
-            at = @At(value = "INVOKE", target = "Lorg/lwjgl/glfw/GLFW;glfwWindowHint(II)V", ordinal = 2, remap = false)
+            at     = @At(value = "INVOKE", target = "Lorg/lwjgl/glfw/GLFW;glfwWindowHint(II)V", ordinal = 2, remap = false)
     )
     void modifyGlMajorVersion(int hint, int value, Operation<Void> original) {
         if (CoreEnvironment.BYPASS_FORCE_OPENGL_VERSION) {
@@ -35,7 +35,7 @@ public class WindowMixin {
 
     @WrapOperation(
             method = "<init>",
-            at = @At(value = "INVOKE", target = "Lorg/lwjgl/glfw/GLFW;glfwWindowHint(II)V", ordinal = 3, remap = false)
+            at     = @At(value = "INVOKE", target = "Lorg/lwjgl/glfw/GLFW;glfwWindowHint(II)V", ordinal = 3, remap = false)
     )
     void modifyGlMinorVersion(int hint, int value, Operation<Void> original) {
         if (CoreEnvironment.BYPASS_FORCE_OPENGL_VERSION) {
@@ -47,7 +47,7 @@ public class WindowMixin {
 
     @WrapOperation(
             method = "<init>",
-            at = @At(value = "INVOKE", target = "Lorg/lwjgl/glfw/GLFW;glfwCreateWindow(IILjava/lang/CharSequence;JJ)J", remap = false)
+            at     = @At(value = "INVOKE", target = "Lorg/lwjgl/glfw/GLFW;glfwCreateWindow(IILjava/lang/CharSequence;JJ)J", remap = false)
     )
     long wrapCreateWindow(int titleEncoded, int width, CharSequence height, long title, long monitor, Operation<Long> original) {
         long hwnd = original.call(titleEncoded, width, height, title, monitor);
@@ -55,14 +55,14 @@ public class WindowMixin {
             return hwnd;
         }
         if (hwnd == 0) {
-            try (MemoryStack stack = MemoryStack.stackPush()) {
-                PointerBuffer buf = stack.mallocPointer(1);
-                int error = GLFW.glfwGetError(buf);
-                if (error != GLFW.GLFW_NO_ERROR) {
-                    long descPtr = buf.get();
-                    String desc = descPtr != 0L ? "" : MemoryUtil.memUTF8(descPtr);
-                    String message = "Trying OpenGL version 4.6: GLFW error: [%d]%s".formatted( error, desc);
-                    LOGGER.error(message);
+            try (MemoryStack stack =  MemoryStack.stackPush()) {
+                PointerBuffer buf  =  stack      .mallocPointer(1);
+                int error          =  GLFW       .glfwGetError(buf);
+                if (error          != GLFW       .GLFW_NO_ERROR) {
+                    long descPtr   =  buf        .get();
+                    String desc    =  descPtr   != 0L ? "" : MemoryUtil.memUTF8(descPtr);
+                    String message =             "Trying OpenGL version 4.6: GLFW error: [%d]%s".formatted( error, desc);
+                    LOGGER.error                   (message);
                     throw new IllegalStateException(message);
                 }
             }

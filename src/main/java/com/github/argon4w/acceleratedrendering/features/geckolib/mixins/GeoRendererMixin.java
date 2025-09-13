@@ -16,9 +16,9 @@ import software.bernie.geckolib.cache.object.GeoBone;
 import software.bernie.geckolib.renderer.GeoRenderer;
 
 @Pseudo
-@ExtensionMethod(VertexConsumerExtension.class)
-@Mixin			(GeoRenderer			.class)
-public interface GeoRendererMixin {
+@ExtensionMethod (VertexConsumerExtension.class)
+@Mixin			 (GeoRenderer			.class )
+public interface GeoRendererMixin              {
 
     @Inject(
             method		= "renderCubesOfBone",

@@ -32,7 +32,7 @@ public class   AcceleratedBufferSourceMixin {
                     target  = "Lcom/github/argon4w/acceleratedrendering/core/buffers/accelerated/AcceleratedRingBuffers$Buffers;bindDrawBuffers()V",
                     ordinal = 0
             ),
-            remap = false
+            remap   = false
     )
     private void beforeBindDrawBuffers(CallbackInfo ci) {
         if (!ImmediateState.isRenderingLevel) {
@@ -45,8 +45,7 @@ public class   AcceleratedBufferSourceMixin {
 			at		= @At(
 					value	= "INVOKE",
 					target	= "Lcom/github/argon4w/acceleratedrendering/core/buffers/accelerated/AcceleratedRingBuffers$Buffers;bindDrawBuffers()V",
-					shift	= At.Shift.AFTER,
-					remap 	= false
+					shift	= At.Shift.AFTER
 			),
 			remap 	= false
 	)
