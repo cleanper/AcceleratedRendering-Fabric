@@ -22,8 +22,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@ExtensionMethod(value = {VertexConsumerExtension	.class, BakedModelExtension.class	})
-@Mixin			(value = {ModelBlockRenderer		.class								}, priority = 999)
+@ExtensionMethod(value  = {VertexConsumerExtension	.class, BakedModelExtension.class	})
+@Mixin			(value  = {ModelBlockRenderer		.class								}, priority = 999)
 public class              ModelBlockRendererMixin {
 
     @Inject(

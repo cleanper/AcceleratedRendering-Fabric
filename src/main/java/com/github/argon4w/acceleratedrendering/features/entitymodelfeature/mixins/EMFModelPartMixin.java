@@ -14,17 +14,17 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import traben.entity_model_features.models.parts.EMFModelPart;
 
+@SuppressWarnings("ALL")
 @Pseudo
 @ExtensionMethod(VertexConsumerExtension.class)
 @Mixin			(EMFModelPart			.class)
 public class     EMFModelPartMixin            {
 
-    @SuppressWarnings	("unchecked")
     @Inject				(
             method		= "compile",
             at			= @At("HEAD"),
             cancellable	= true,
-            remap = false
+            remap       = false
     )
     public void compileFast(
             PoseStack.Pose	pPose,

@@ -16,15 +16,15 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Pseudo;
 import org.spongepowered.asm.mixin.injection.At;
 
+@SuppressWarnings("ALL")
 @Pseudo
 @ExtensionMethod(VertexConsumerExtension.class)
 @Mixin			(IGeoRenderer			.class)
 public interface IGeoRendererMixin {
 
-    @SuppressWarnings	("unchecked")
-    @WrapOperation		(
-			method		= "renderRecursively",
-			at			= @At(
+    @WrapOperation		    (
+			method		    = "renderRecursively",
+			at			    = @At(
 					value	= "INVOKE",
 					target	= "Lcom/github/tartaricacid/touhoulittlemaid/compat/sodium/SodiumCompat;sodiumRenderCubesOfBone(Lcom/github/tartaricacid/touhoulittlemaid/geckolib3/geo/animated/AnimatedGeoBone;Lcom/mojang/blaze3d/vertex/PoseStack;Lcom/mojang/blaze3d/vertex/VertexConsumer;IIFFFF)Z"
 			)

@@ -20,9 +20,9 @@ import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
-@ExtensionMethod(value = {VertexConsumerExtension	.class, BakedModelExtension.class	})
-@Mixin			(value = {ItemRenderer				.class								})
-public class              ItemRendererMixin {
+@ExtensionMethod(value   = {VertexConsumerExtension	.class, BakedModelExtension.class	})
+@Mixin			(value   = {ItemRenderer			.class							    })
+public class                ItemRendererMixin                                           {
 
 	@WrapOperation(
 			method	= "render",
@@ -31,8 +31,7 @@ public class              ItemRendererMixin {
 					target	= "Lnet/minecraft/client/renderer/entity/ItemRenderer;renderModelLists(Lnet/minecraft/client/resources/model/BakedModel;Lnet/minecraft/world/item/ItemStack;IILcom/mojang/blaze3d/vertex/PoseStack;Lcom/mojang/blaze3d/vertex/VertexConsumer;)V"
 			)
 	)
-    @SuppressWarnings("deprecation")
-	public void renderFast(
+    public void renderFast(
 			ItemRenderer	instance,
 			BakedModel		pModel,
 			ItemStack		pStack,

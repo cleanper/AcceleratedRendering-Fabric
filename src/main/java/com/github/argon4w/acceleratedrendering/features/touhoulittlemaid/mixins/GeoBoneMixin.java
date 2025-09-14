@@ -21,12 +21,14 @@ import java.util.Map;
 
 @Pseudo
 @ExtensionMethod(VertexConsumerExtension.class)
-@Mixin			(GeoBone				.class)
+@Mixin(GeoBone				.class)
 public class GeoBoneMixin implements IAcceleratedRenderer<Void> {
 
-	@Shadow @Final private GeoMesh						cubes;
+    @Shadow(remap = false) @Final
+    private           GeoMesh           cubes;
 
-	@Unique private final	Map<IBufferGraph, IMesh>	meshes = new Object2ObjectOpenHashMap<>();
+	@Unique
+    private final	Map<IBufferGraph, IMesh>	meshes = new Object2ObjectOpenHashMap<>();
 
 	@Unique
 	@Override

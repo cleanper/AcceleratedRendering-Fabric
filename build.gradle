@@ -50,33 +50,35 @@ repositories {
             includeGroup "maven.modrinth"
         }
     }
+    maven {
+        url "https://cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
 }
 
 dependencies {
-	// To change the versions see the gradle.properties file
-	minecraft "net.minecraft:minecraft:${project.minecraft_version}"
-    mappings loom.layered() {
-        officialMojangMappings()
-        parchment("org.parchmentmc.data:parchment-1.21.1:2024.11.17@zip")
-    }
-	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-
-	// Fabric API. This is technically optional, but you probably want it anyway.
-	//modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-	modImplementation fabricApi.module("fabric-resource-loader-v0", project.fabric_version)
-	modImplementation("com.terraformersmc:modmenu:${project.modmenu_version}")
-	modImplementation("fuzs.forgeconfigapiport:forgeconfigapiport-fabric:21.1.4")
-	modCompileOnly "maven.modrinth:sodium:mc1.21.1-0.6.13-fabric"
-	modCompileOnly "maven.modrinth:iris:1.8.8+1.21.1-fabric"
-    modCompileOnly "maven.modrinth:geckolib:4.7.7"
-    modCompileOnly "maven.modrinth:entity-model-features:3.0.1"
-	modCompileOnly "maven.modrinth:immediatelyfast:1.6.6+1.21.1-fabric"
-    modCompileOnly "maven.modrinth:axiom:5.0.1"
-    compileOnly("com.moulberry:mixinconstraints:1.1.0")
-	compileOnly("org.projectlombok:lombok:1.18.38")
-	annotationProcessor("org.projectlombok:lombok:1.18.38")
-	modImplementation "dev.emi:trinkets:3.10.0"
-	//implementation "com.github.tartaricacid:touhoulittlemaid-1.21.1:release-1.2.2"
+    // To change the versions see the gradle.properties file
+    minecraft           "net.minecraft:minecraft:${project.minecraft_version}"
+    mappings loom.layered() { officialMojangMappings() parchment("org.parchmentmc.data:parchment-1.21.1:2024.11.17@zip") }
+    modImplementation   "net.fabricmc:fabric-loader:${project.loader_version}"
+    // Fabric API. This is technically optional, but you probably want it anyway.
+    //modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+    modImplementation fabricApi.module("fabric-resource-loader-v0", project.fabric_version)
+    modImplementation   "com.terraformersmc:modmenu:${project.modmenu_version}"
+    modImplementation   "fuzs.forgeconfigapiport:forgeconfigapiport-fabric:21.1.4"
+    modImplementation   "dev.emi:trinkets:3.10.0"
+    compileOnly         "org.projectlombok:lombok:1.18.38"
+    annotationProcessor "org.projectlombok:lombok:1.18.38"
+    compileOnly         "com.moulberry:mixinconstraints:1.1.0"
+    modCompileOnly      "maven.modrinth:axiom:5.0.1"
+    modCompileOnly      "maven.modrinth:geckolib:4.7.7"
+    modCompileOnly      "maven.modrinth:iris:1.8.8+1.21.1-fabric"
+    modCompileOnly      "maven.modrinth:entity-model-features:3.0.1"
+    modCompileOnly      "maven.modrinth:sodium:mc1.21.1-0.6.13-fabric"
+    modCompileOnly      "maven.modrinth:immediatelyfast:1.6.6+1.21.1-fabric"
+    modCompileOnly      "curse.maven:touhoulittlemaid-orihime-1311287:6990129-sources-6990129"
 }
 
 processResources {
