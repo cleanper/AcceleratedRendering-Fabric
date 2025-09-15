@@ -14,12 +14,12 @@ import net.neoforged.fml.config.ModConfig;
 
 public class AcceleratedRenderingModEntry implements ClientModInitializer {
 
-    public static final String MOD_ID = "acceleratedrendering";
+    public static final String  MOD_ID     =     "acceleratedrendering";
 
     @Getter
     private static ModContainer container;
 
-    public static  ResourceLocation location(           String path  ) {
+    public static  ResourceLocation location(             String path) {
         return     ResourceLocation.fromNamespaceAndPath(MOD_ID, path) ;
     }
 

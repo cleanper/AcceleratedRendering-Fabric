@@ -17,13 +17,13 @@ import net.minecraft.client.renderer.block.model.BakedQuad;
  * @see QuadTransformers
  */
 public interface IQuadTransformer {
-    int STRIDE = DefaultVertexFormat.BLOCK.getVertexSize() / 4;
+    int STRIDE   = DefaultVertexFormat.BLOCK.getVertexSize() / 4;
     int POSITION = findOffset(VertexFormatElement.POSITION);
-    int COLOR = findOffset(VertexFormatElement.COLOR);
-    int UV0 = findOffset(VertexFormatElement.UV0);
-    int UV1 = findOffset(VertexFormatElement.UV1);
-    int UV2 = findOffset(VertexFormatElement.UV2);
-    int NORMAL = findOffset(VertexFormatElement.NORMAL);
+    int COLOR    = findOffset(VertexFormatElement.COLOR);
+    int UV0      = findOffset(VertexFormatElement.UV0);
+    int UV1      = findOffset(VertexFormatElement.UV1);
+    int UV2      = findOffset(VertexFormatElement.UV2);
+    int NORMAL   = findOffset(VertexFormatElement.NORMAL);
 
     void processInPlace(BakedQuad quad);
 
