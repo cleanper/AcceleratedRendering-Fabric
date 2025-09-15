@@ -6,7 +6,7 @@ import java.nio.ByteBuffer;
 
 public class MutableBuffer extends MutableSize implements IServerBuffer {
 
-	private final	int				bits;
+	private   final	     int			bits;
 
 	protected		ImmutableBuffer glBuffer;
 

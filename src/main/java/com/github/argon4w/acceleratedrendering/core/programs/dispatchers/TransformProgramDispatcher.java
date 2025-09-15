@@ -21,7 +21,7 @@ public class TransformProgramDispatcher {
     private static	final	int								GROUP_SIZE					= 128;
     private static	final	int								DISPATCH_COUNT_Y_Z			= 1;
 
-    private					ITransformShaderProgramOverride	lastOverride;
+    private	ITransformShaderProgramOverride	                lastOverride;
 
     public TransformProgramDispatcher() {
         this.lastOverride = null;

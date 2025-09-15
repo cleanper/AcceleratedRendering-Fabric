@@ -24,8 +24,8 @@ import java.util.Map;
 
 @Pseudo
 @ExtensionMethod(VertexConsumerExtension.class)
-@Mixin(GeoBone				            .class)
-public class GeoBoneMixin implements IAcceleratedRenderer<Void> {
+@Mixin          (GeoBone	        	.class)
+public class    GeoBoneMixin implements IAcceleratedRenderer<Void> {
 
     @Shadow(remap = false) @Final
     private List<GeoCube> cubes;
