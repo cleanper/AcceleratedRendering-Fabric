@@ -113,27 +113,5 @@ public class              ModelBlockRendererMixin {
                     -1
             );
         }
-        randomSource.setSeed(42L);
-        extension1.doRender(
-                AcceleratedQuadsRenderer.INSTANCE,
-                new AcceleratedQuadsRenderContext(
-                        model.getQuads(
-                                state,
-                                null,
-                                randomSource
-                        ),
-                        new FixedColors(FastColor.ARGB32.colorFromFloat(
-                                1.0f,
-                                Mth.clamp(red, 0.0f, 1.0f),
-                                Mth.clamp(green, 0.0f, 1.0f),
-                                Mth.clamp(blue, 0.0f, 1.0f)
-                        ))
-                ),
-                pose.pose(),
-                pose.normal(),
-                packedLight,
-                packedOverlay,
-                -1
-        );
     }
 }

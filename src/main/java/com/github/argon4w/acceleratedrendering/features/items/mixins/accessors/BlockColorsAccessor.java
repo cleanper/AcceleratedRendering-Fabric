@@ -11,6 +11,7 @@ import java.util.Map;
 
 @Mixin(          BlockColors.class   )
 public interface BlockColorsAccessor {
+
     @Accessor("blockColors")
     IdMapper<BlockColor> getBlockColors();
 }

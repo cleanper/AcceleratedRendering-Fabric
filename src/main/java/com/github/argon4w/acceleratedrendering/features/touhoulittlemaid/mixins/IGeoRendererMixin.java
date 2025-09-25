@@ -16,12 +16,12 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Pseudo;
 import org.spongepowered.asm.mixin.injection.At;
 
-@SuppressWarnings("ALL")
 @Pseudo
 @ExtensionMethod(VertexConsumerExtension.class)
 @Mixin			(IGeoRenderer			.class)
 public interface IGeoRendererMixin {
 
+    @SuppressWarnings	("unchecked")
     @WrapOperation		    (
 			method		    = "renderRecursively",
 			at			    = @At(
@@ -43,14 +43,14 @@ public interface IGeoRendererMixin {
 	) {
 		var extension = buffer.getAccelerated();
 
-		if (			AcceleratedEntityRenderingFeature	.isEnabled						()
-				&&		AcceleratedEntityRenderingFeature	.shouldUseAcceleratedPipeline	()
-				&&		extension							.isAccelerated					()
-				&&	(	CoreFeature							.isRenderingLevel				()
-				||	(	CoreFeature							.isRenderingGui					()
-				&&		AcceleratedEntityRenderingFeature	.shouldAccelerateInGui			()))
-		) {
-			var pose = poseStack.last();
+        if (			AcceleratedEntityRenderingFeature	.isEnabled						()
+                &&		AcceleratedEntityRenderingFeature	.shouldUseAcceleratedPipeline	()
+                &&	(	CoreFeature							.isRenderingLevel				()
+                ||	(	CoreFeature							.isRenderingGui					()
+                &&		AcceleratedEntityRenderingFeature	.shouldAccelerateInGui			()))
+                &&		extension							.isAccelerated					()
+        ) {
+            var pose = poseStack.last();
 
 			extension.doRender(
 					(IAcceleratedRenderer<Void>) bone	.geoBone(),

@@ -8,7 +8,6 @@
     "ModelBlockRendererMixin",
     "accessors.BlockColorsAccessor",
     "accessors.ItemColorsAccessor",
-    "accessors.MinecraftAccessor",
     "gui.AbstractContainerScreenMixin",
     "gui.GuiGraphicsMixin",
     "gui.GuiMixin",

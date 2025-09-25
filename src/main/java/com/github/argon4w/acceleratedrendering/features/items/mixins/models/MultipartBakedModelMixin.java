@@ -39,7 +39,6 @@ public abstract class MultipartBakedModelMixin implements IAcceleratedBakedModel
 
     @Shadow @Final private Map<BlockState, BitSet> selectorCache;
 
-
     @Inject(
             method	= "<init>",
             at		= @At("TAIL")
@@ -70,6 +69,8 @@ public abstract class MultipartBakedModelMixin implements IAcceleratedBakedModel
 
     }
 
+
+
     @Override
     public void renderBlockFast(
             BlockState					state,
@@ -80,11 +81,21 @@ public abstract class MultipartBakedModelMixin implements IAcceleratedBakedModel
             int							overlay,
             int							color
     ) {
-        var bitset	= getSelectors		(state);
+        var bitSet	= selectorCache.get(state);
+        if (bitSet == null) {
+            bitSet = new BitSet();
+            for(int i = 0; i < this.selectors.size(); ++i) {
+                Pair<Predicate<BlockState>, BakedModel> pair = this.selectors.get(i);
+                if ((pair.getLeft()).test(state)) {
+                    bitSet.set(i);
+                }
+            }
+            this.selectorCache.put(state, bitSet);
+        }
         var seed	= random.nextLong	();
 
-        for (var j = 0; j < bitset.length(); j ++) {
-            if (bitset.get(j)) {
+        for (var j = 0; j < bitSet.length(); j ++) {
+            if (bitSet.get(j)) {
                 selectors
                         .get			(j)
                         .getRight		()
@@ -105,24 +116,5 @@ public abstract class MultipartBakedModelMixin implements IAcceleratedBakedModel
     @Override
     public int getCustomColor(int layer, int color) {
         return color;
-    }
-
-    @Unique
-    private BitSet getSelectors(BlockState state) {
-        BitSet bitSet = selectorCache.get(state);
-        if (bitSet == null) {
-            bitSet = new BitSet();
-
-            for (int i = 0; i < selectors.size(); i++) {
-                Pair<Predicate<BlockState>, BakedModel> pair = selectors.get(i);
-                if (pair.getLeft().test(state)) {
-                    bitSet.set(i);
-                }
-            }
-
-            selectorCache.put(state, bitSet);
-        }
-
-        return bitSet;
     }
 }

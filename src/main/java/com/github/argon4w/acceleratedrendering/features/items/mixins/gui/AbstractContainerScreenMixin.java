@@ -3,9 +3,9 @@ package com.github.argon4w.acceleratedrendering.features.items.mixins.gui;
 import com.github.argon4w.acceleratedrendering.core.CoreFeature;
 import com.github.argon4w.acceleratedrendering.features.items.AcceleratedItemRenderingFeature;
 import com.github.argon4w.acceleratedrendering.features.items.IAcceleratedGuiGraphics;
+import com.github.argon4w.acceleratedrendering.features.items.contexts.DecorationRenderContext;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
-import com.github.argon4w.acceleratedrendering.features.items.contexts.DecorationRenderContext;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
@@ -19,6 +19,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.List;
@@ -26,11 +27,9 @@ import java.util.List;
 @Mixin(AbstractContainerScreen.class)
 public abstract class AbstractContainerScreenMixin extends ScreenMixin {
 
-//	@Shadow public abstract int getSlotColor(int index);
-
-	@Shadow @Nullable protected Slot hoveredSlot;
-	@Unique private final List<DecorationRenderContext> decorations	= new ObjectArrayList<>();
-	@Unique private final List<Slot>					highlights	= new ObjectArrayList<>();
+    @Shadow @Nullable protected Slot hoveredSlot;
+    @Unique private final List<DecorationRenderContext> decorations	= new ObjectArrayList<>();
+    @Unique private final List<Slot>					highlights	= new ObjectArrayList<>();
 
 	@Inject(
 			method	= "render",
@@ -51,22 +50,23 @@ public abstract class AbstractContainerScreenMixin extends ScreenMixin {
 		}
 	}
 
-	@Inject(
-			method	        = "render",
-			at		        = @At(
-					value	= "INVOKE",
-					target	= "Lnet/minecraft/client/gui/screens/inventory/AbstractContainerScreen;renderLabels(Lnet/minecraft/client/gui/GuiGraphics;II)V"
-			)
-	)
-	public void flushBatching(
-			GuiGraphics		guiGraphics,
-			int				mouseX,
-			int				mouseY,
-			float			partialTick,
-			CallbackInfo	ci
-	) {
-		CoreFeature								.resetGuiBatching	();
-		((IAcceleratedGuiGraphics) guiGraphics)	.flushItemBatching	();
+    @Inject(
+            method	        = "render",
+            at		        = @At(
+                    value	= "INVOKE",
+                    target	= "Lnet/minecraft/client/gui/screens/inventory/AbstractContainerScreen;renderLabels(Lnet/minecraft/client/gui/GuiGraphics;II)V",
+                    shift	= At.Shift.BEFORE
+            )
+    )
+    public void flushBatching(
+            GuiGraphics		guiGraphics,
+            int				mouseX,
+            int				mouseY,
+            float			partialTick,
+            CallbackInfo	ci
+    ) {
+        CoreFeature								.resetGuiBatching	();
+        ((IAcceleratedGuiGraphics) guiGraphics)	.flushItemBatching	();
 
 		guiGraphics.pose().pushPose();
 		guiGraphics.pose().translate(0.0F, 0.0F, 100.0F);
@@ -103,40 +103,29 @@ public abstract class AbstractContainerScreenMixin extends ScreenMixin {
 		decorations	.clear();
 	}
 
-	@WrapOperation(
-			method		= "render",
-			at			= @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screens/inventory/AbstractContainerScreen;renderSlotHighlight(Lnet/minecraft/client/gui/GuiGraphics;III)V")
-	)
-    private void recordSlotHighlights(
-		GuiGraphics guiGraphics,
-		int x,
-		int y,
-		int blitOffset,
-		Operation<Void> original
+    @Redirect(
+            method		    = "render",
+            at			    = @At(
+                    value 	= "INVOKE",
+                    target 	= "Lnet/minecraft/client/gui/screens/inventory/AbstractContainerScreen;renderSlotHighlight(Lnet/minecraft/client/gui/GuiGraphics;III)V"
+            )
+    )
+    public void recordSlotHighlights(
+            GuiGraphics guiGraphics, int x, int y, int blitOffset
     ) {
-		if (CoreFeature.isGuiBatching()) {
-			highlights.add(this.hoveredSlot);
-			return;
-		}
-		original.call(guiGraphics, x, y, blitOffset);
-	}
+        if (CoreFeature.isGuiBatching()) {
+            highlights.add(this.hoveredSlot);
+        }
+    }
 
-	@WrapOperation(
-			method		    = "renderSlot",
-			at			    = @At(
-					value	= "INVOKE",
-					target	= "Lnet/minecraft/client/gui/GuiGraphics;renderItemDecorations(Lnet/minecraft/client/gui/Font;Lnet/minecraft/world/item/ItemStack;IILjava/lang/String;)V"
-			)
-	)
-	public void recordSlotItems(
-		GuiGraphics         instance,
-		Font                font,
-		ItemStack           stack,
-		int                 x,
-		int                 y,
-		String              text,
-		Operation<Void>     original
-	) {
+    @WrapOperation(
+            method		    = "renderSlot",
+            at			    = @At(
+                    value	= "INVOKE",
+                    target	= "Lnet/minecraft/client/gui/GuiGraphics;renderItemDecorations(Lnet/minecraft/client/gui/Font;Lnet/minecraft/world/item/ItemStack;IILjava/lang/String;)V"
+            )
+    )
+    public void recordSlotDecorations(GuiGraphics instance, Font font, ItemStack stack, int x, int y, String text, Operation<Void> original) {
         if (CoreFeature.isGuiBatching()) {
             decorations.add(new DecorationRenderContext(
                 stack,
