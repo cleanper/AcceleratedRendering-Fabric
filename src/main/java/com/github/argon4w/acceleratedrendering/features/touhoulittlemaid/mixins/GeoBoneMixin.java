@@ -24,7 +24,7 @@ import java.util.Map;
 @Mixin			(GeoBone				.class)
 public class GeoBoneMixin implements IAcceleratedRenderer<Void> {
 
-    @Shadow @Final private GeoMesh						cubes;
+    @Shadow(remap = false)  @Final private GeoMesh		cubes;
 
     @Unique private final	Map<IBufferGraph, IMesh>	meshes = new Object2ObjectOpenHashMap<>();
 

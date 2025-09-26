@@ -14,12 +14,13 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import traben.entity_model_features.models.parts.EMFModelPart;
 
-@SuppressWarnings("ALL")
+@SuppressWarnings("")
 @Pseudo
 @ExtensionMethod(VertexConsumerExtension.class)
 @Mixin			(EMFModelPart			.class)
 public class     EMFModelPartMixin            {
 
+    @SuppressWarnings({"MixinAnnotationTarget", "UnresolvedMixinReference"})
     @Inject				(
             method		= "compile",
             at			= @At("HEAD"),
@@ -44,6 +45,7 @@ public class     EMFModelPartMixin            {
                 &&		extension							.isAccelerated					()
         ) {
             ci			.cancel		();
+            //noinspection unchecked
             extension	.doRender	(
                     (IAcceleratedRenderer<Void>) this,
                     null,
